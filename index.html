@@ -1,0 +1,370 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Uma surpresa especial</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Montserrat:wght@300;400;500;600&display=swap" rel="stylesheet">
+
+<style>
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    min-height: 100vh;
+    background: linear-gradient(145deg, #f8eeee, #f2e1e4, #eee1dc);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+    font-family: 'Montserrat', sans-serif;
+    color: #67434d;
+}
+
+.container {
+    width: 100%;
+    max-width: 440px;
+    background: rgba(255,255,255,0.82);
+    border-radius: 24px;
+    padding: 38px 25px;
+    text-align: center;
+    box-shadow: 0 12px 45px rgba(100,50,60,0.10);
+    border: 1px solid rgba(190,140,150,0.25);
+}
+
+.simbolo {
+    font-size: 25px;
+    color: #b77b89;
+    margin-bottom: 18px;
+}
+
+h1 {
+    font-family: 'Great Vibes', cursive;
+    font-size: 52px;
+    font-weight: normal;
+    color: #a76579;
+    margin-bottom: 12px;
+}
+
+.subtitulo {
+    font-size: 13px;
+    line-height: 1.9;
+    color: #92737b;
+    margin-bottom: 27px;
+}
+
+.linha {
+    width: 55px;
+    height: 1px;
+    background: #d6a6b2;
+    margin: 0 auto 28px;
+}
+
+#area-direcao {
+    min-height: 175px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 15px;
+}
+
+.direcao {
+    width: 100%;
+    background: #fbf4f4;
+    border: 1px solid #f0dfe2;
+    border-radius: 17px;
+    padding: 28px 20px;
+    animation: aparecer 0.6s ease;
+}
+
+.icone {
+    font-size: 25px;
+    margin-bottom: 15px;
+}
+
+.numero {
+    font-size: 10px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: #b58a94;
+    margin-bottom: 15px;
+}
+
+.texto {
+    font-size: 15px;
+    line-height: 1.9;
+    color: #70515a;
+}
+
+button {
+    width: 100%;
+    border: none;
+    border-radius: 30px;
+    padding: 16px;
+    background: linear-gradient(120deg, #b77b89, #94596b);
+    color: white;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 13px;
+    font-weight: 500;
+    letter-spacing: 0.5px;
+    cursor: pointer;
+    transition: 0.3s;
+    box-shadow: 0 5px 15px rgba(140,80,100,0.18);
+}
+
+button:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 20px rgba(140,80,100,0.25);
+}
+
+.progresso {
+    display: flex;
+    justify-content: center;
+    gap: 8px;
+    margin: 20px 0 25px;
+}
+
+.bolinha {
+    width: 7px;
+    height: 7px;
+    border-radius: 50%;
+    background: #e8d4d9;
+    transition: 0.3s;
+}
+
+.bolinha.ativa {
+    background: #a76579;
+    transform: scale(1.4);
+}
+
+.final {
+    animation: aparecer 1s ease;
+}
+
+.final h2 {
+    font-family: 'Great Vibes', cursive;
+    font-size: 45px;
+    font-weight: normal;
+    color: #a76579;
+    margin-bottom: 15px;
+}
+
+.final p {
+    font-size: 14px;
+    line-height: 2;
+    color: #70515a;
+}
+
+.rodape {
+    margin-top: 28px;
+    font-size: 10px;
+    color: #b4979e;
+    letter-spacing: 0.5px;
+}
+
+@keyframes aparecer {
+    from {
+        opacity: 0;
+        transform: translateY(15px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@media(max-width:380px) {
+    .container {
+        padding: 30px 18px;
+    }
+
+    h1 {
+        font-size: 44px;
+    }
+
+    .texto {
+        font-size: 14px;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<div class="container">
+
+    <div class="simbolo">♡</div>
+
+    <h1>Para começar bem a semana</h1>
+
+    <p class="subtitulo">
+        Algo que combina com seus traços<br>
+        & com sua "paleta de cores".
+    </p>
+
+    <div class="linha"></div>
+
+    <div id="area-direcao">
+
+        <div class="direcao">
+            <div class="icone">✧</div>
+
+            <p class="texto">
+                Antes de chegar em casa, você tem uma parada.
+                <br><br>
+                Siga as instruções com atenção.
+                No final, haverá algo esperando por você.
+            </p>
+        </div>
+
+    </div>
+
+    <div class="progresso" id="progresso"></div>
+
+    <button id="botao" onclick="proximaDirecao()">
+        Vamos começar ♡
+    </button>
+
+    <div class="rodape">
+        Com carinho, para Camilla.
+    </div>
+
+</div>
+
+<script>
+
+// PERSONALIZE AS INSTRUÇÕES AQUI
+
+const direcoes = [
+
+    {
+        icone: "I",
+        texto: "Siga pela Formosa até o sinal do cruzamento com a rua do Jardim São Benedito."
+    },
+
+    {
+        icone: "II",
+        texto: "Dobre a direita e siga até o sinal do cruzamento com a rua do Salete (prédio do Motiva)."
+    },
+
+    {
+        icone: "III",
+        texto: "Vire a esquerda e na próxima, à direita, saindo na 28 de Março."
+    },
+
+    {
+        icone: "IV",
+        texto: "Falta pouco! Siga direto, passando pela Pontual e seguindo pela rua Dr. Beda (rua do Colégio Adventista)."
+    },
+
+    {
+        icone: "V",
+        texto: "Seu destino estará na rua Dr. Beda, nº 111. Apresente-se como Camilla."
+    }
+
+];
+
+let etapa = -1;
+
+function criarProgresso() {
+
+    const area = document.getElementById("progresso");
+
+    area.innerHTML = "";
+
+    direcoes.forEach((item, index) => {
+
+        const bolinha = document.createElement("div");
+
+        bolinha.className = "bolinha";
+
+        if (index <= etapa) {
+            bolinha.classList.add("ativa");
+        }
+
+        area.appendChild(bolinha);
+
+    });
+
+}
+
+function proximaDirecao() {
+
+    etapa++;
+
+    const area = document.getElementById("area-direcao");
+    const botao = document.getElementById("botao");
+
+    if (etapa < direcoes.length) {
+
+        const item = direcoes[etapa];
+
+        area.innerHTML = `
+
+            <div class="direcao">
+
+                <div class="icone">${item.icone}</div>
+
+                <div class="numero">
+                    Etapa ${etapa + 1} de ${direcoes.length}
+                </div>
+
+                <p class="texto">
+                    ${item.texto}
+                </p>
+
+            </div>
+
+        `;
+
+        botao.innerHTML = etapa === direcoes.length - 1
+            ? "Descobrir a surpresa ♡"
+            : "Continuar →";
+
+    } else {
+
+        area.innerHTML = `
+
+            <div class="final">
+
+                <div style="font-size:38px; color:#a76579; margin-bottom:15px;">
+                    ♡
+                </div>
+
+                <h2>Finalmente!</h2>
+
+                <p>
+                    Toda surpresa tem seu encanto,
+                    mas algumas ficam ainda mais especiais
+                    quando compartilhadas com alguém especial.
+                    <br><br>
+                    Aproveite esse momento.
+                    Ele foi pensado para você.
+                    <br><br>
+                    <strong>Com muito carinho. ♡</strong>
+                </p>
+
+            </div>
+
+        `;
+
+        botao.style.display = "none";
+
+    }
+
+    criarProgresso();
+
+}
+
+criarProgresso();
+
+</script>
+
+</body>
+</html>
+```
